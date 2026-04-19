@@ -13,9 +13,9 @@ from backend.app import create_app
 app = create_app()
 
 # Vercel serverless function handler
-def handler(event, context):
+def handler(request):
     """Vercel serverless function handler"""
-    return app(event, context)
+    return app(request.environ, lambda status, headers: None)
 
 # For local testing
 if __name__ == "__main__":
