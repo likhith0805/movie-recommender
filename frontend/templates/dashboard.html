@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Recommendation Dashboard{% endblock %}
+
+{% block content %}
+  <script>
+    window.APP_PAGE = "dashboard";
+  </script>
+
+  <div class="row g-4">
+    <div class="col-12 col-lg-7">
+      <div class="card app-card">
+        <div class="card-body">
+          <div class="d-flex align-items-start justify-content-between gap-3">
+            <div>
+              <h2 class="h5 mb-1">Personal Recommendations</h2>
+              <div class="text-white-50 small">Based on your ratings + collaborative filtering.</div>
+            </div>
+            <div class="text-white-50 small" id="meSmallLabel"></div>
+          </div>
+
+          <div id="personalRecsLoading" class="text-center my-3 d-none">
+            <div class="spinner-border" role="status"></div>
+          </div>
+          <div id="personalRecsError" class="alert alert-danger d-none" role="alert"></div>
+          <div id="personalRecsGrid" class="row row-cols-1 row-cols-sm-2 g-3 mt-1"></div>
+        </div>
+      </div>
+
+      <div class="card app-card mt-4">
+        <div class="card-body">
+          <h2 class="h5 mb-2">Group Recommendations</h2>
+          <div class="text-white-50 small mb-3">
+            Enter user IDs (comma-separated). We aggregate preferences and recommend common unseen movies.
+          </div>
+
+          <label class="form-label small">User IDs</label>
+          <input
+            id="groupUserIdsInput"
+            class="form-control"
+            placeholder="e.g., 1, 42"
+          />
+          <div class="d-flex gap-2 mt-3 flex-wrap">
+            <button id="groupRecBtn" class="btn btn-primary" type="button">Get Group Recommendations</button>
+            <button id="useMeAsGroupBtn" class="btn btn-outline-secondary" type="button">Use my user id</button>
+          </div>
+
+          <div id="groupRecsLoading" class="text-center my-3 d-none">
+            <div class="spinner-border" role="status"></div>
+          </div>
+          <div id="groupRecsError" class="alert alert-danger d-none" role="alert"></div>
+          <div id="groupRecsGrid" class="row row-cols-1 row-cols-sm-2 g-3 mt-1"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 col-lg-5">
+      <div class="card app-card">
+        <div class="card-body">
+          <h2 class="h5 mb-2">Movie Chatbot</h2>
+          <div class="text-white-50 small mb-3">Rule-based helper (not an LLM yet).</div>
+
+          <div id="chatAlert" class="alert alert-info d-none" role="alert"></div>
+
+          <label class="form-label small">Ask</label>
+          <input id="chatInput" class="form-control" placeholder='e.g., "Suggest movies for me and my friend user 12"' />
+          <button id="chatSendBtn" class="btn btn-success w-100 mt-3" type="button">Get Suggestions</button>
+
+          <div class="mt-4">
+            <div class="text-white-50 small">Response</div>
+            <div id="chatReply" class="mt-2 white-box"></div>
+          </div>
+
+          <div class="mt-4">
+            <div class="text-white-50 small">Chat recommendations</div>
+            <div id="chatRecsGrid" class="row row-cols-1 g-3 mt-1"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+

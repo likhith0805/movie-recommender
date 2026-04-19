@@ -1,0 +1,53 @@
+:root{
+  --bg: #0b0f17;
+  --panel: rgba(255,255,255,0.14);
+}
+
+body{
+  background: radial-gradient(1200px 600px at 20% 0%, rgba(13,110,253,0.25), transparent 55%),
+              radial-gradient(900px 500px at 80% 10%, rgba(25,135,84,0.22), transparent 50%),
+              var(--bg);
+  color: #f2f4ff;
+}
+
+.app-card{
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  color: inherit;
+}
+
+/* Bootstrap's `.text-white-50` can become too faint on very dark backgrounds. */
+.text-white-50{
+  color: rgba(242,244,255,0.88) !important;
+}
+
+.app-card .form-control{
+  background: rgba(255,255,255,0.96);
+  color: #0b0f17;
+  border: 1px solid rgba(255,255,255,0.22);
+}
+
+.app-card .form-control::placeholder{
+  color: rgba(11,15,23,0.55);
+}
+
+.app-card label{
+  color: #f2f4ff;
+}
+
+.poster-img{
+  height: 320px;
+  object-fit: cover;
+  background: rgba(255,255,255,0.12);
+}
+
+.white-box{
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 10px;
+  padding: 10px;
+  white-space: pre-wrap;
+}
+

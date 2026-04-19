@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Browse Movies{% endblock %}
+
+{% block content %}
+  <div class="row g-3 align-items-end">
+    <div class="col-12 col-md-6">
+      <label class="form-label">Search by title</label>
+      <input id="searchInput" class="form-control" placeholder="e.g., Matrix" />
+    </div>
+    <div class="col-12 col-md-4">
+      <label class="form-label">Genre contains</label>
+      <input id="genreInput" class="form-control" placeholder="e.g., Comedy" />
+    </div>
+    <div class="col-12 col-md-2">
+      <button id="searchBtn" class="btn btn-primary w-100">Search</button>
+    </div>
+  </div>
+
+  <hr class="my-4" />
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h2 class="h5 mb-0">Movies</h2>
+    <button class="btn btn-outline-secondary btn-sm" id="refreshMoviesBtn" type="button">Refresh</button>
+  </div>
+
+  <div id="moviesGrid" class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3"></div>
+
+  <div id="moviesLoading" class="text-center my-4 d-none">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div id="moviesError" class="alert alert-danger d-none" role="alert"></div>
+
+  <script>
+    window.APP_PAGE = "browse";
+  </script>
+{% endblock %}
+

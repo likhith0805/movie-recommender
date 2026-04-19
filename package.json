@@ -1,0 +1,12 @@
+{
+  "name": "movie-recommender",
+  "version": "1.0.0",
+  "description": "Movie Recommender Flask App",
+  "scripts": {
+    "build": "echo 'Build complete'",
+    "start": "python backend/app.py"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

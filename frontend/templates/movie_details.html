@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block title %}Movie Details{% endblock %}
+
+{% block content %}
+  <script>
+    window.APP_PAGE = "movie_details";
+    window.MOVIE_ID = {{ movie_id }};
+  </script>
+
+  <div id="movieLoading" class="text-center my-4">
+    <div class="spinner-border" role="status"></div>
+  </div>
+
+  <div id="movieError" class="alert alert-danger d-none" role="alert"></div>
+
+  <div id="movieDetailsSection" class="d-none">
+    <div class="row g-4">
+      <div class="col-12 col-md-4">
+        <div class="card app-card h-100">
+          <img id="moviePoster" class="card-img-top poster-img" alt="Poster" />
+          <div class="card-body">
+            <h1 id="movieTitle" class="h5 mb-2"></h1>
+            <div class="text-white-50" id="movieGenre"></div>
+            <hr />
+            <div class="small text-white-50">Your rating</div>
+            <div id="yourRatingLabel" class="fw-bold mb-3">Not rated</div>
+            <div class="d-grid gap-2">
+              <button id="likeBtn" class="btn btn-success">Like</button>
+              <button id="dislikeBtn" class="btn btn-outline-danger">Dislike</button>
+            </div>
+            <div class="mt-3">
+              <label class="form-label small">Or set 1-5:</label>
+              <div class="d-flex gap-2 flex-wrap">
+                <button class="btn btn-sm btn-outline-light" data-rating="1" type="button">1</button>
+                <button class="btn btn-sm btn-outline-light" data-rating="2" type="button">2</button>
+                <button class="btn btn-sm btn-outline-light" data-rating="3" type="button">3</button>
+                <button class="btn btn-sm btn-outline-light" data-rating="4" type="button">4</button>
+                <button class="btn btn-sm btn-outline-light" data-rating="5" type="button">5</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12 col-md-8">
+        <div class="card app-card">
+          <div class="card-body">
+            <h2 class="h6">Your personalized recommendations</h2>
+            <div class="text-white-50 small mb-3">Includes a “why” explanation.</div>
+            <div id="personalRecsGrid" class="row row-cols-1 row-cols-sm-2 g-3"></div>
+            <div id="personalRecsLoading" class="text-center my-3 d-none">
+              <div class="spinner-border" role="status"></div>
+            </div>
+            <div id="personalRecsError" class="alert alert-danger d-none" role="alert"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
+
