@@ -19,6 +19,16 @@ from routes.ratings_routes import ratings_bp
 from routes.recommendations_routes import reco_bp
 from routes.chatbot_routes import chat_bp
 
+# Auto-initialize database if it doesn't exist
+if not os.path.exists(Config.DATABASE_PATH):
+    print("Database not found. Initializing...")
+    try:
+        from backend.init_db import main as init_db_main
+        init_db_main()
+        print("Database initialized successfully!")
+    except Exception as e:
+        print(f"Database initialization failed: {e}")
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATE_DIR = BASE_DIR / "frontend" / "templates"
